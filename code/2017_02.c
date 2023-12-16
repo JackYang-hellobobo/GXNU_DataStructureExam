@@ -1,37 +1,43 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
 /*
-³ýÊý / ±»³ýÊý = ÉÌ ... ÓàÊý
+ï¿½ï¿½ï¿½ï¿½ / ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = ï¿½ï¿½ ... ï¿½ï¿½ï¿½ï¿½
 ...
-              = 0  ... ÓàÊý(½áÊø) 
+              = 0  ... ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½) 
 
 */
 
-// ·ÇµÝ¹é 
-int f1(int x){
+// ï¿½ÇµÝ¹ï¿½
+int f1(int x)
+{
 	char path[100];
-	int k=0; 
-	while(x){
-		int a = x/2;
-		int b=x%2; // a:ÉÌ b:ÓàÊý
-		path[k++]=(b+'0'); 
-		x=a; // ÏÂÒ»¸ö³ýÊýÊÇÉÌ 
+	int k = 0;
+	while (x)
+	{
+		int a = x / 2;
+		int b = x % 2; // a:ï¿½ï¿½ b:ï¿½ï¿½ï¿½ï¿½
+		path[k++] = (b + '0');
+		x = a; // ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
-	while(k>=0)printf("%c",path[--k]);
-} 
+	while (k >= 0)
+		printf("%c", path[--k]);
+}
 
-// µÝ¹é
-void f2(int x){
-	int a=x/2,b=x%2;
-	if(a==0){
-		printf("%d",b);
+// ï¿½Ý¹ï¿½
+void f2(int x)
+{
+	int a = x / 2, b = x % 2;
+	if (a == 0)
+	{
+		printf("%d", b);
 		return;
 	}
-	f2(a),printf("%d",b);
-} 
-int main(){
+	f2(a), printf("%d", b);
+}
+int main()
+{
 	f1(15);
 	printf("\n");
 	f2(15);
 	return 0;
-} 
+}

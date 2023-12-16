@@ -1,55 +1,61 @@
-#include<stdio.h>
-#include<stdlib.h>
-typedef struct LNode{
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct LNode
+{
 	int data;
 	struct LNode *next;
-}*LinkList; 
+} * LinkList;
 
-void merge_link(LinkList LA,LinkList LB){
-	// Ê×ÏÈÉ¾³ýÈ¥ÖØ  BÖØ¸´µÄÔªËØ½øÐÐÉ¾³ý
-	
-	
-	 
-//	return LA;
+void merge_link(LinkList LA, LinkList LB)
+{
+	// ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½È¥ï¿½ï¿½  Bï¿½Ø¸ï¿½ï¿½ï¿½Ôªï¿½Ø½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
+
+	//	return LA;
 }
 
-// ´«ÈëÍ·½áµã´´½¨Ò»¸öÁ´±í 
-LinkList create(LinkList L){
-	L->data=-1,L->next=NULL;
+// ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ã´´ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+LinkList create(LinkList L)
+{
+	L->data = -1, L->next = NULL;
 	LinkList p = L;
-	while(1){
+	while (1)
+	{
 		int t;
-		scanf("%d",&t);
-		if(t==-1)break;
+		scanf("%d", &t);
+		if (t == -1)
+			break;
 		LinkList q = (LinkList)malloc(sizeof(LinkList));
-		q->data=t,q->next=NULL;
-		p->next=q;
-		p=p->next;
+		q->data = t, q->next = NULL;
+		p->next = q;
+		p = p->next;
 	}
-	
-	return L; 
+
+	return L;
 }
 
-int main(){
+int main()
+{
 	LinkList LA = (LinkList)malloc(sizeof(LinkList));
 	create(LA);
 	LinkList LB = (LinkList)malloc(sizeof(LinkList));
 	create(LB);
-	
-	merge_link(LA,LB);
-	
+
+	merge_link(LA, LB);
+
 	LinkList pa = LA;
-	while(pa){
-		printf("%d ",pa->data);
-		pa=pa->next;
+	while (pa)
+	{
+		printf("%d ", pa->data);
+		pa = pa->next;
 	}
 	printf("\n");
-	
+
 	LinkList pb = LB;
-	while(pb){
-		printf("%d ",pb->data);
-		pb=pb->next;
+	while (pb)
+	{
+		printf("%d ", pb->data);
+		pb = pb->next;
 	}
-	
+
 	return 0;
 }

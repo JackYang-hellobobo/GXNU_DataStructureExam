@@ -1,81 +1,54 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #define N 5
 
 int GM[N][N];
 
-typedef struct GNode{
-	int v; // ¶¥µã±àºÅ 
-	int w; // È¨Öµ 
+typedef struct GNode
+{
+	int v; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	int w; // È¨Öµ
 	struct GNode *next;
-}*GNode;
+} * GNode;
 
 GNode GT[N];
 
-int main(){
-	// ´´½¨ÁÚ½Ó±í 
+int main()
+{
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ú½Ó±ï¿½
 	int i;
-	for(i=0;i<=N;i++){
-		GT[i]=(GNode)malloc(sizeof(GNode));
-		GT[i]->v=-1,GT[i]->w=-1,GT[i]->next=NULL;
-	}
-	
-	
-	while(1)
+	for (i = 0; i <= N; i++)
 	{
-		int x,y,w;
-		scanf("%d%d%d",&x,&y,&w);
-		if(x==-1||y==-1||w==-1)break;
-		GNode p = GT[x-1];
-		while(p->next)p=p->next;
-		GNode q = (GNode)malloc(sizeof(GNode));
-		q->v=y,q->w=w,q->next=NULL;
-		p->next=q;	
-
+		GT[i] = (GNode)malloc(sizeof(GNode));
+		GT[i]->v = -1, GT[i]->w = -1, GT[i]->next = NULL;
 	}
-	// ´òÓ¡ÁÚ½Ó±í
 
-	for(i=0;i<N;i++){
+	while (1)
+	{
+		int x, y, w;
+		scanf("%d%d%d", &x, &y, &w);
+		if (x == -1 || y == -1 || w == -1)
+			break;
+		GNode p = GT[x - 1];
+		while (p->next)
+			p = p->next;
+		GNode q = (GNode)malloc(sizeof(GNode));
+		q->v = y, q->w = w, q->next = NULL;
+		p->next = q;
+	}
+	// ï¿½ï¿½Ó¡ï¿½Ú½Ó±ï¿½
+
+	for (i = 0; i < N; i++)
+	{
 		GNode p = GT[i]->next;
-		printf("\n| ½áµã%d | -> ",i+1);
-		while(p){
-			printf("| %d | %d | -> ",p->v,p->w);
-			p=p->next;
+		printf("\n| ï¿½ï¿½ï¿½%d | -> ", i + 1);
+		while (p)
+		{
+			printf("| %d | %d | -> ", p->v, p->w);
+			p = p->next;
 		}
 		printf("NULL");
-	} 
-	
-	
+	}
 	return 0;
-} 
-
-
-
-
-
-
-
-/*
-Æðµã ÖÕµã È¨ÖØ 
-1 2 9
-1 3 2
-1 5 6
-2 1 9
-2 3 3
-3 1 2 
-3 2 3
-3 4 5 
-4 3 5
-4 5 1
-5 1 6
-5 4 1 
--1 -1 -1
-*/ 
-
-
-
-
-
-
-
+}

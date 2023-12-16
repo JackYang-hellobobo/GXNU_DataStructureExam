@@ -1,63 +1,73 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 /*
-ÅÐ¶ÏÁ½¿Å¶þ²æÊ÷ÊÇ·ñÏàµÈºÜ¼òµ¥: 
-Ö»Òª²ÉÓÃÒ»ÖÖ±éÀúµÄ·½Ê½,Ö»Òª±éÀú³öÀ´µÄÐòÁÐÊÇÏàµÈ,ÔòËµÃ÷Á½¸ö¶þ²æÊ÷ÏàµÈ 
+ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½Å¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ÈºÜ¼ï¿½: 
+Ö»Òªï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ö±ï¿½ï¿½ï¿½ï¿½Ä·ï¿½Ê½,Ö»Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 
 */
 
-typedef struct TNode{
+typedef struct TNode
+{
 	char val;
-	struct TNode *left,*right;
-}*TNode;
+	struct TNode *left, *right;
+} * TNode;
 
-
-// true:1   false:0 
-int is_same(TNode a,TNode b){
-	if(a==NULL && b==NULL)return 1; // Á½¸ö¶þ²æÊ÷¶¼ÎªNULL 
-	if((a==NULL && b!=NULL) || (a!=NULL && b==NULL))return 0;
-	if(a->val==b->val){
-		return is_same(a->left,b->left) && is_same(a->right,b->right);
-	}else{
+// true:1   false:0
+int is_same(TNode a, TNode b)
+{
+	if (a == NULL && b == NULL)
+		return 1; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªNULL
+	if ((a == NULL && b != NULL) || (a != NULL && b == NULL))
+		return 0;
+	if (a->val == b->val)
+	{
+		return is_same(a->left, b->left) && is_same(a->right, b->right);
+	}
+	else
+	{
 		return 0;
 	}
-} 
+}
 
-TNode create(){
-	TNode T; 
+TNode create()
+{
+	TNode T;
 	char ch;
-	scanf("%c",&ch);
-	if(ch=='#')T=NULL;
-	else{
+	scanf("%c", &ch);
+	if (ch == '#')
+		T = NULL;
+	else
+	{
 		T = (TNode)malloc(sizeof(TNode));
 		T->val = ch;
 		T->left = create();
 		T->right = create();
 	}
-	return T; 
-} 
-
-void first_root(TNode T){
-	if(T==NULL)return;
-	printf("%c ",T->val);
-	first_root(T->left);
-	first_root(T->right); 
+	return T;
 }
 
-int main(){
-	// ¹¹½¨Ò»¿Ã¶þ²æÊ÷ 
+void first_root(TNode T)
+{
+	if (T == NULL)
+		return;
+	printf("%c ", T->val);
+	first_root(T->left);
+	first_root(T->right);
+}
+
+int main()
+{
+	// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½
 	TNode T1 = create();
 	getchar();
 	TNode T2 = create();
-	
+
 	first_root(T1);
 	printf("\n");
 	first_root(T2);
 	printf("\n");
-	
-	int res = is_same(T1,T2);
-	printf("%d\n",res);
+
+	int res = is_same(T1, T2);
+	printf("%d\n", res);
 	return 0;
 }
-
-
